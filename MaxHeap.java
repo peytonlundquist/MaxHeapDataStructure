@@ -31,7 +31,7 @@ public class MaxHeap {
 		if((r < heapSize) && (A[r].compareTo(A[largest]) > 0)) { // If right node is greater than largest
 			largest = r;
 		}
-		if(largest != i) { 										 // If the largest node isn't the parent
+		if(largest != i) { 					 // If the largest node isn't the parent
 			Process tempProcess = A[i];
 			A[i] = A[largest];
 			A[largest] = tempProcess;
