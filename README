@@ -1,42 +1,84 @@
-# Project #: Project Name
+# Project #: 2
 
-* Author: Your Name
-* Class: CS321 Section #
-* Semester: 
+* Author: Peyton Lundquist
+* Class: CS321 Section #3
+* Semester: Fall 2021
 
 ## Overview
 
-Concisely explain what the program does. If this exceeds a couple of
-sentences, you're going too far. Generally you should be pulling this
-right from the project specification. I don't want you to just cut and
-paste, but paraphrase what is stated in the project specification.
+This program simulates a priority-based round robin scheduling algorithm.
+The algorithm assigns a CPU to a running process.
 
 ## Reflection
 
-Write a two paragraph reflection describing your experience with this 
-project.  Talk about what worked well and what was challenging.  
-Did you run into an issue that took some time to figure out?  
-Tell us about it. What did you enjoy, what was less desirable? Feel
-free to add other items (within the two paragraph limit).
+My experience with this project was mostly positive. I enjoyed being 
+able to try out translating psuedo-code straight from the textbook
+and get an understanding on how well I can do that, or not well. I also
+enjoy making data structures, because the behavior of them is seemingly
+simple, but it takes a lot of time and thought about how to implement
+the data structure before it should be coded. For this reason, I enjoyed
+making a Max Heap. The other parts of the project, like the Process, 
+Process Generator, and Priority Queue were easier to make, and pretty 
+straight forward most of the time. Another part of the project I really
+enjoyed was making the Max Heap tester class HeapTester. I took the 
+ListTester class from Mason Vail's CS221 course, and essentially reworked
+the whole thing, but kept the formatting and approach. It has been 
+transformed entirely to be used for specifically Max Heaps which use 
+Processes rather than IndexedUnsortedLists and elements. I found that 
+to be a real learning  experience for me, and I would like to keep doing 
+the same type of transformation and permutive application of this type 
+of unit testing.
+
+One thing about this project and many others that is challenging, is
+how many moving parts there are, and consequently how easy it is for 
+it to break. Every character counts towards making or breaking the
+entire project, and that can be overwhelming at times. I suppose
+that's why we have the debugger tool, which in a way could balance 
+that dynamic as to not make the developer go crazy. Also, it can
+be difficult to maintain my bearings within all the parts, because
+the scope can be fairly wide. I sometimes need to re-familiarize myself
+with the environment and project each time I visit it, in order to be
+productive.
 
 ## Compiling and Using
 
-This section should tell the user how to compile your code.  It is
-also appropriate to instruct the user how to use your code. Does your
-program require user input? If so, what does your user need to know
-about it to use it as quickly as possible?
+From the directory containing all source files, compile the
+driver class (and all dependencies) with the command:
+$ javac *.java
+
+Run the compiled class files with the command:
+$ java CPUScheduling <maxProcessTime> <maxPriorityLevel> 
+<timeToIncrementPriority> <simulationTime> <processArrivalRate> 
+[<seed>]
+
+Alternatively, to run the Max Heap tesing class, HeapTester, run:
+$ java HeapTester
+
+Console output will give the results after the program finishes.
 
 ## Results 
 
-This section presents timing and other results of the experiments that 
-you were asked to perform as part of the project.
+CPUScheduling Output:
+$ javac *.java
+$ ./run-tests.sh
+Running   java CPUScheduling 2 2 1 20 0.5 1234
+ ---- Test 1 output matches!
+Running   java CPUScheduling 1 1 2 10 0.5 1234
+ ---- Test 2 output matches!
+Running   java CPUScheduling 10 10 10 200 0.5 1234
+ ---- Test 3 output matches!
+Running   java CPUScheduling 10 10 10 100 0.9 1234
+ ---- Test 4 output matches!
+Running   java CPUScheduling 10 10 10 100 0.1 1234
+ ---- Test 5 output matches!
+ 
+HeapTester Output Summary:
+Total Tests Run: 150,  Passed: 150 (100.0%),  Failed: 0
 
 ## Sources used
 
-If you used any sources outside of the lecture notes, class lab files,
-or text book you need to list them here. If you looked something up on
-stackoverflow.com and fail to cite it in this section it will be
-considered plagiarism and be dealt with accordingly. So be safe CITE!
+Introduction to Algorithms, third edition
+BSU CS 221, Mason Vail, ListTester class format
 
 ----------
 This README template is using Markdown. To preview your README output,

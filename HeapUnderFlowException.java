@@ -1,4 +1,12 @@
-
+/**
+ * HeapUnderFlowException is an Exception thrown when the heap size is less
+ * than one
+ * 
+ * @author Peyton
+ * @date 10/12/2021
+ */
 public class HeapUnderFlowException extends Exception {
-	//System.out.print("HeapUnderFlowException: Heap size is less than 1.");
+	public HeapUnderFlowException(String s) {
+		super(s);
+	}
 }

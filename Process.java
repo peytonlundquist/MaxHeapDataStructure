@@ -1,15 +1,27 @@
-
+/**
+ * This class defines a Process for the CPUScheduling driver
+ * 
+ * @author Peyton Lundquist
+ * @date 10/13/2021
+ */
 public class Process implements ProcessInterface, Comparable<Process>{
 	private int priority;
 	private int timeRemaining;
 	private int arrivalTime;
 	private int waitingTime; 
 	
+	/**
+	 * Process constructor
+	 * @param currentTime The time at which the Process was created
+	 * @param processTime The time it takes to complete the Process
+	 * @param priority The priority level for the Process
+	 */
 	public Process(int currentTime, int processTime, int priority){
 		arrivalTime = currentTime;
 		this.priority = priority;
 		timeRemaining = processTime;
 	}
+	
 	@Override
 	public int getPriority() {
 		return priority;
@@ -18,7 +30,6 @@ public class Process implements ProcessInterface, Comparable<Process>{
 	@Override
 	public void setPriority(int priority) {
 		this.priority = priority;
-		
 	}
 
 	@Override
@@ -52,13 +63,13 @@ public class Process implements ProcessInterface, Comparable<Process>{
 	@Override
 	public void incrementWaitingTime() {
 		waitingTime++;
-		
 	}
 
 	@Override
 	public void resetWaitingTime() {
 		waitingTime = 0;
 	}
+	
 	@Override
 	public int compareTo(Process o) {
 		if(this.getPriority() < o.getPriority()) {

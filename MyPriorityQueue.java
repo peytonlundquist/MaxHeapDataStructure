@@ -1,6 +1,15 @@
-
+/**
+ * MyPriorityQueue extends the MAxHeap class and provides a priority
+ * queue structure.
+ * 
+ * @author Peyton Lundquist
+ * @date 10/13/2021
+ */
 public class MyPriorityQueue extends MaxHeap implements PriorityQueueInterface {
 	
+	/**
+	 * Constructer
+	 */
 	public MyPriorityQueue() {
 		super();
 	}

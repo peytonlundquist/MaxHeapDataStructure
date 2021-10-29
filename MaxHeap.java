@@ -3,7 +3,7 @@
  * designed for processes, defined by the Process class.
  * 
  * @author Peyton Lundquist
- * 
+ * @date 10/13/2021
  */
 public class MaxHeap {
 	protected int heapSize;
@@ -17,21 +17,21 @@ public class MaxHeap {
 	
 	/**
 	 * Maintain the max-heap property.
-	 * @param i The index in the heap, which to call maxHeapify on.
+	 * @param i The index in the heap, which to call maxHeapify on
 	 */
 	public void maxHeapify(int i) {
 		int l = left(i);
 		int r = right(i);
 		int largest;
-		if((l <= heapSize) && (A[l].compareTo(A[i]) > 0)) { 
+		if((l < heapSize) && (A[l].compareTo(A[i]) > 0)) {       // If left node is greater than parent
 			largest = l;
 		}else {
 			largest = i;
 		}
-		if((r <= heapSize) && (A[r].compareTo(A[largest]) > 0)) {
+		if((r < heapSize) && (A[r].compareTo(A[largest]) > 0)) { // If right node is greater than largest
 			largest = r;
 		}
-		if(largest != i) {
+		if(largest != i) { 										 // If the largest node isn't the parent
 			Process tempProcess = A[i];
 			A[i] = A[largest];
 			A[largest] = tempProcess;
@@ -46,7 +46,7 @@ public class MaxHeap {
 	 */
 	public void buildMaxHeap(Process[] A) {
 		this.A = new Process[A.length];
-		for(int i = 1; i < A.length; i++) {
+		for(int i = 1; i < A.length; i++) { // Copy array
 			this.A[i] = A[i];
 		}
 		heapSize = this.A.length - 1;
@@ -62,7 +62,7 @@ public class MaxHeap {
 	 */
 	public void maxHeapInsert(Process p) throws Exception {
 		int key = p.getPriority();
-		p.setPriority(Integer.MIN_VALUE);
+		p.setPriority(Integer.MIN_VALUE); // Insures the node starts at the bottom of the heap
 		doubleHeapSpace();
 		A[heapSize] = p;
 		heapSize++;
@@ -70,25 +70,25 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * Doubles the current heap space
+	 * Doubles the current heap space.
 	 */
 	private void doubleHeapSpace() {
 		if(heapSize >= A.length - 1) {
 			int newSize = A.length * 2;
 			Process[] temp = new Process[newSize];
-			System.arraycopy(A, 0, temp, 0, A.length-1);
+			System.arraycopy(A, 0, temp, 0, A.length-1); // Copies array over
 			A = temp;
 		}
 	}
 	
 	/**
 	 * Extracts the Max Process from the heap.
-	 * @return Process with maximum priority key.
+	 * @return Process with maximum priority key
 	 * @throws HeapUnderFlowException
 	 */
 	public Process heapExtractMax() throws HeapUnderFlowException {
 		if(heapSize < 1) {
-			throw new HeapUnderFlowException();
+			throw new HeapUnderFlowException("Heap size is less than one.");
 		}
 		Process max = A[0];
 		A[0] = A[heapSize-1];
@@ -97,7 +97,7 @@ public class MaxHeap {
 		return max;
 	}
 	/**
-	 * Increases the priority key of the given Process
+	 * Increases the priority key of the given Process.
 	 * @param i The index of the process
 	 * @param p Process to increase priority key
 	 * @param key Priority key value to update Process to
@@ -105,7 +105,7 @@ public class MaxHeap {
 	 */
 	public void heapIncreaseKey(int i, Process p, int key) throws Exception {
 		p.setPriority(key);
-		if(p.getPriority() < A[i].getPriority()) {
+		if(p.getPriority() < A[i].getPriority()) { // If the key isn't being increased
 			throw new Exception();
 		}
 		A[i] = p;
@@ -118,7 +118,7 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * Returns the heap's maximum Process
+	 * Returns the heap's maximum Process.
 	 * @return The Process with the highest priority key
 	 */
 	public Process heapMaximum() {
@@ -126,7 +126,7 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * Parent node function
+	 * Parent node function.
 	 * @param i Index of child
 	 * @return The parent index of child node
 	 */
@@ -135,7 +135,7 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * Left node function
+	 * Left node function.
 	 * @param i Index of parent
 	 * @return The left child node index of parent node
 	 */
@@ -144,7 +144,7 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * Right node function
+	 * Right node function.
 	 * @param i Index of parent
 	 * @return The right child node index of parent node
 	 */
@@ -153,12 +153,17 @@ public class MaxHeap {
 	}
 	
 	/**
-	 * Returns heapSize
+	 * Returns heapSize.
 	 * @return Number of Processes in the heap
 	 */
 	public int getHeapSize() {
 		return heapSize;
 	}
+	
+	/**
+	 * Prints the heap iteratively.
+	 * @return The heap in a Process[]
+	 */
 	public Process[] printHeap() {
 		if(heapSize < 1) {
 			return null;
@@ -171,10 +176,18 @@ public class MaxHeap {
 		return A;	
 	}
 	
+	/**
+	 * Getter for the heap.
+	 * @return The heap in a Process[]
+	 */
 	public Process[] getHeap() {
 		return A;	
 	}
 	
+	/**
+	 * Prints a 3-level binary tree for visualization of the
+	 * heap.
+	 */
 	public void printHeapTree() {
 		for(int i = 1; i < A.length; i++) {
 			System.out.print(A[i].getPriority() + " ");
